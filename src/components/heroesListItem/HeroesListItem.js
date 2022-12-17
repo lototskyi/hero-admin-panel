@@ -1,4 +1,4 @@
-const HeroesListItem = ({name, description, element, deleteItem}) => {
+const HeroesListItem = ({name, description, element, onDelete}) => {
 
     let elementClassName;
 
@@ -36,7 +36,7 @@ const HeroesListItem = ({name, description, element, deleteItem}) => {
                     type="button" 
                     className="btn-close btn-close" 
                     aria-label="Close"
-                    onClick={() => deleteItem()}></button>
+                    onClick={onDelete}></button>
             </span>
         </li>
     )

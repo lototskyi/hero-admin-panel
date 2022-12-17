@@ -11,3 +11,11 @@
 ul {
     padding: 0;
 }
+
+.card-exit {
+    opacity: 1;
+}
+.card-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}
