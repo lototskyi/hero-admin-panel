@@ -19,7 +19,7 @@ import { heroCreated } from '../../actions';
 
 const HeroesAddForm = () => {
 
-    const {filters, filtersLoadingStatus} = useSelector(state => state);
+    const {filters, filtersLoadingStatus} = useSelector(state => state.filters);
     // console.log(filtersLoadingStatus);
     const [heroName, setHeroName] = useState('');
     const [heroDescr, setHeroDescr] = useState('');
