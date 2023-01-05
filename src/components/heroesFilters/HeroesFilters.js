@@ -2,19 +2,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
-import { fetchFilters, activeFilterChanged } from '../heroesFilters/filtersSlice';
+import { fetchFilters, activeFilterChanged, selectAll } from '../heroesFilters/filtersSlice';
 import Spinner from '../spinner/Spinner';
-
-// Задача для этого компонента:
-// Фильтры должны формироваться на основании загруженных данных
-// Фильтры должны отображать только нужных героев при выборе
-// Активный фильтр имеет класс active
-// Изменять json-файл для удобства МОЖНО!
-// Представьте, что вы попросили бэкенд-разработчика об этом
 
 const HeroesFilters = () => {
 
-    const {filters, filtersLoadingStatus, activeFilter} = useSelector(state => state.filters);
+    const filters = useSelector(selectAll);
+    const {filtersLoadingStatus, activeFilter} = useSelector((state) => state.filters)
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -33,10 +28,7 @@ const HeroesFilters = () => {
             return <h5 className="text-center mt-5">Фильтры не найдены</h5>
         }
 
-        // Данные в json-файле я расширил классами и текстом
         return arr.map(({name, className, label}) => {
-
-            // Используем библиотеку classnames и формируем классы динамически
             const btnClass = classNames('btn', className, {
                 'active': name === activeFilter
             });
